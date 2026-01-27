@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- META TAGS: Tell browser about page encoding and viewport -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio - Landing Page</title>
+  <!-- LINK STYLESHEET: Import CSS styling -->
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <!-- HEADER COMPONENT: Navigation bar shared across all pages -->
+  <header>
+    <nav>
+      <div class="logo">MyPortfolio</div>
+      <ul id="navigation">
+        <!-- Navigation items will be populated by JavaScript -->
+      </ul>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTENT: Hero section for landing page -->
+  <main>
+    <section class="hero">
+      <!-- HERO SECTION COMPONENT: Eye-catching introduction section
+           Purpose: Grab attention with title, subtitle, and call-to-action button
+      -->
+      <h1>Welcome to My Portfolio</h1>
+      <p>Explore my projects, read my thoughts, and learn more about me</p>
+      <a href="pages/projects.html" class="btn">View My Work</a>
+    </section>
+
+    <!-- FEATURE PREVIEW: Quick links to main sections -->
+    <section>
+      <h2>What You'll Find Here</h2>
+      <div class="card-grid">
+        <!-- CARD COMPONENT: Reusable container for information
+             Purpose: Display content in a visually appealing box with hover effects
+        -->
+        <div class="card">
+          <h3>📝 Blog</h3>
+          <p>Read articles about web development, tech, and my learning journey.</p>
+          <a href="pages/blog.html" class="btn">Read Blog</a>
+        </div>
+        <div class="card">
+          <h3>🚀 Projects</h3>
+          <p>Check out the projects I've built and the technologies I used.</p>
+          <a href="pages/projects.html" class="btn">View Projects</a>
+        </div>
+        <div class="card">
+          <h3>👤 About Me</h3>
+          <p>Learn more about my background, skills, and interests.</p>
+          <a href="pages/about.html" class="btn">About Me</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER COMPONENT: Shared across all pages -->
+  <footer>
+    <p>&copy; 2026 My Portfolio. All rights reserved.</p>
+  </footer>
+
+  <!-- SCRIPT: Load navigation and set active page
+       Purpose: Dynamically create navigation menu and highlight current page
+  -->
+  <script src="../js/navigation.js"></script>
+</body>
+</html>
