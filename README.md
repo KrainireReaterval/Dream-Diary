@@ -3,7 +3,7 @@
 ## Project Structure
 
 ```
-pw/
+/
 ├── pages/                 # HTML pages (routes)
 │   ├── index.html        # Landing page
 │   ├── blog.html         # Blog page
