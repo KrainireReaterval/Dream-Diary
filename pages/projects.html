@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hermeneus+One&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: white;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .projects-canvas {
+      position: relative;
+      width: 560px;
+      height: 320px;
+      background: white;
+      transform-origin: center center;
+    }
+
+    /* "Projects" — Impact 32px, left:400, top:22, w:121, h:34 */
+    .projects-title {
+      position: absolute;
+      left: 400px;
+      top: 22px;
+      width: 121px;
+      height: 34px;
+      font-family: Impact, 'Impact Regular', sans-serif;
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 400;
+      color: black;
+      line-height: normal;
+    }
+
+    /* Quote block — Hermeneus One 12px, right-aligned, right edge at 510px */
+    .quote-block {
+      position: absolute;
+      left: 510px;
+      top: 76px;
+      transform: translateX(-100%);
+      font-family: 'Hermeneus One', serif;
+      font-size: 12px;
+      font-style: normal;
+      color: black;
+      text-align: right;
+      line-height: normal;
+      white-space: nowrap;
+    }
+
+    .quote-block p {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="projects-canvas">
+
+    <p class="projects-title">Projects</p>
+
+    <div class="quote-block">
+      <p>World is a game!</p>
+      <p>I value experience and legacy.</p>
+      <p>Build systems that last as far as it goes.</p>
+    </div>
+
+  </div>
+
+  <script>
+    function scaleCanvas() {
+      const canvas = document.querySelector('.projects-canvas');
+      const scaleX = window.innerWidth / 560;
+      const scaleY = window.innerHeight / 320;
+      const scale = Math.min(scaleX, scaleY);
+      canvas.style.transform = 'scale(' + scale + ')';
+    }
+
+    scaleCanvas();
+    window.addEventListener('resize', scaleCanvas);
+  </script>
+</body>
+</html>

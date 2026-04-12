@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Hermeneus+One&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: white;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .blog-canvas {
+      position: relative;
+      width: 560px;
+      height: 320px;
+      background: white;
+      transform-origin: center center;
+      overflow: visible;
+    }
+
+    /* "blog" title */
+    .blog-title-wrapper {
+      position: absolute;
+      left: 37px;
+      top: -4px;
+      width: 121.113px;
+      height: 85.859px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: visible;
+    }
+
+    .blog-title {
+      font-family: 'Caveat', cursive;
+      font-size: 64px;
+      font-weight: 400;
+      color: black;
+      line-height: normal;
+      transform: rotate(-21.18deg);
+      white-space: nowrap;
+      display: block;
+    }
+
+    /* Red rounded rectangle */
+    .shape-rect {
+      position: absolute;
+      left: 112px;
+      top: 134px;
+      width: 91px;
+      height: 87px;
+      background: #FF2020;
+      border-radius: 12px;
+    }
+
+    /* Blue triangle */
+    .shape-triangle {
+      position: absolute;
+      left: 260px;
+      top: 57px;
+      width: 248px;
+      height: 271px;
+    }
+
+    .shape-triangle-inner {
+      position: absolute;
+      left: 6.7%;
+      right: 6.7%;
+      top: 0;
+      bottom: 25%;
+      background: #2800FF;
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    }
+
+    /* Orange circle */
+    .shape-circle {
+      position: absolute;
+      left: 361px;
+      top: 13px;
+      width: 45px;
+      height: 44px;
+      background: #F5A520;
+      border-radius: 50%;
+    }
+
+    /* Quote text */
+    .quote-text {
+      position: absolute;
+      left: 472px;
+      top: 282px;
+      transform: translateX(-100%);
+      font-family: 'Hermeneus One', serif;
+      font-size: 12px;
+      font-style: normal;
+      color: black;
+      text-align: right;
+      line-height: normal;
+      white-space: nowrap;
+    }
+
+    .quote-text p {
+      margin: 0;
+    }
+
+    /* "click anywhere to continue" */
+    .continue-text {
+      position: absolute;
+      left: 203px;
+      top: 282px;
+      transform: translateX(-100%);
+      font-family: 'Hermeneus One', serif;
+      font-size: 12px;
+      font-style: normal;
+      color: #acacac;
+      text-align: right;
+      line-height: normal;
+      white-space: nowrap;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="blog-canvas">
+
+    <!-- Vector2: sweeping arc with drop shadow -->
+    <svg style="position:absolute;left:-2px;top:57px;overflow:visible;" width="557" height="265" viewBox="0 0 557 265" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g filter="url(#filter0_d_8_88)">
+        <path d="M-2 25.4884C270.914 -105.323 307.302 334.924 560 243.356" stroke="#A9A9A9" stroke-width="2"/>
+      </g>
+      <defs>
+        <filter id="filter0_d_8_88" x="-6.43225" y="0" width="570.773" height="265" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+          <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+          <feOffset dy="4"/>
+          <feGaussianBlur stdDeviation="2"/>
+          <feComposite in2="hardAlpha" operator="out"/>
+          <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_8_88"/>
+          <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_8_88" result="shape"/>
+        </filter>
+      </defs>
+    </svg>
+
+    <!-- "blog" title -->
+    <div class="blog-title-wrapper">
+      <span class="blog-title">blog</span>
+    </div>
+
+    <!-- Red rounded rectangle -->
+    <div class="shape-rect"></div>
+
+    <!-- Blue triangle -->
+    <div class="shape-triangle">
+      <div class="shape-triangle-inner"></div>
+    </div>
+
+    <!-- Orange circle -->
+    <div class="shape-circle"></div>
+
+    <!-- Quote -->
+    <div class="quote-text">
+      <p>I don't write blogs. Blogs are stupid.</p>
+      <p>-- Once at eighteen</p>
+    </div>
+
+    <!-- Continue prompt -->
+    <p class="continue-text">click anywhere to continue</p>
+
+  </div>
+
+  <script>
+    function scaleCanvas() {
+      const canvas = document.querySelector('.blog-canvas');
+      const scaleX = window.innerWidth / 560;
+      const scaleY = window.innerHeight / 320;
+      const scale = Math.min(scaleX, scaleY);
+      canvas.style.transform = 'scale(' + scale + ')';
+    }
+
+    scaleCanvas();
+    window.addEventListener('resize', scaleCanvas);
+
+    document.body.addEventListener('click', function () {
+      // TODO: navigate to blog content
+    });
+  </script>
+</body>
+</html>
