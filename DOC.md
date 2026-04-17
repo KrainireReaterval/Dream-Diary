@@ -11,23 +11,21 @@
 - Keep solutions simple and direct.
 - User instructions always override this file.
 
-# Action Guidelines
+# Guidelines
+
+**The Request and Changelog serves as a documentation of code evolvement of this website, while Architecture serves as general decisiob documentation.**
 
 Do not edit READMD.md in this repository.
 
 Do not edit # Approach and # Action Guidelines in DOC.md.
 
-I will upload requests for debug/feature request/design build/architectural advising to terminal or Claude plugin in vscode. Claude will review my request and address them accordingly.
+I will upload requests for debug/feature request/design build/architectural advising. Claude will summarize, review and address them accordingly.
 
 Claude should add changelog everytime it edits code. 
 
-Claude can add tasks in Actions/Active when Claude find it to be neccessary to fulfill my request. 
+Claude can add or remove tasks in *Changelog*. Modification of tasks depends on Claude's judgement of whether it is relevent with one request.
 
-Claude can remove tasks in Actions/Active when it find it not neccessary to fulfill my request.
-
-Claude is only allowed to move tasks from *Active* to *Completed* once I reviewed and agreed to last edit. 
-
-If I ask follow up questions that disrupts the flow, Claude does not need to move tasks from *Pending for Review* to *Completed* unless further requested.
+Claude moves last queue of tasks from *Pending for review* to *Completed* automatically when user finishes the last request and file a new one.
 
 My request can be large or small. Claude should breakdown request into bite size actions for better auditing.
 
@@ -39,18 +37,11 @@ Add requests here. Summarize from user's text. Numeric number (1,2,3,4,...)
 
 2. Add hover-reveal headbar to blog, about, and projects pages. Bar hides by default, appears when mouse approaches the top, hides when mouse moves away. Links to all four pages (skips current page). index.html excluded.
 
-# Tasks
+# Changelog
 
-## Active
+## Pending for Review
 
-Template: task + request number (one request can have many small tasks or only one) + optional memo
-
-- [ ] Example: Build blog.html card grid layout — waiting on design decision: tags or no tags?
-
-
-## Pending for Review - Changelog
-
-Template: task + request number + what files were changed
+Template: task + corresponding request number + what files were changed
 
 - [ ] Example: Set up navigation.js smooth scroll - edited navigation.js
 
@@ -60,9 +51,9 @@ Template: task + request number + what files were changed
 
 ## Completed
 
-Template: task + request number
+Template: task + request number + date completed
 
-- [x] Example: Write base style.css with CSS variables.
+- [x] Example: Write base style.css with CSS variables - 02/04/2025
 
 
 # Architectural Decisions
