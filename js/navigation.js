@@ -1,69 +1,84 @@
-/* NAVIGATION COMPONENT: Dynamically create navigation menu
-   Purpose: Generate navigation links and highlight the current active page
-   Why: This reduces code repetition across pages and makes updates easier
-*/
+(function () {
+  if (!document.querySelector('link[href*="Goblin+One"]')) {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://fonts.googleapis.com/css2?family=Goblin+One&display=swap';
+    document.head.appendChild(link);
+  }
 
-// DEFINE NAVIGATION STRUCTURE
-// This is a data structure (array of objects) that defines all page routes
-const pages = [
-  { name: 'Home', path: '../pages/index.html', id: 'home' },
-  { name: 'Blog', path: '../pages/blog.html', id: 'blog' },
-  { name: 'Projects', path: '../pages/projects.html', id: 'projects' },
-  { name: 'About', path: '../pages/about.html', id: 'about' }
-];
+  const style = document.createElement('style');
+  style.textContent = `
+    #site-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999;
+      display: flex;
+      justify-content: flex-end;
+      gap: 32px;
+      padding: 16px 40px;
+      background: white;
+      transform: translateY(-100%);
+      transition: transform 0.25s ease;
+    }
+    #site-nav.nav-visible {
+      transform: translateY(0);
+    }
+    #site-nav a {
+      font-family: 'Goblin One', serif;
+      font-size: 12px;
+      color: black;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+  `;
+  document.head.appendChild(style);
 
-// FUNCTION: Render Navigation Menu
-// Purpose: Loop through pages array and create <a> tags for each page
-// How: Creates HTML elements and adds them to the navigation <ul>
-function renderNavigation() {
-  const navList = document.getElementById('navigation');
-  
-  // Loop through each page in our pages array
-  pages.forEach(page => {
-    // CREATE: New <li> element to hold the link
-    const listItem = document.createElement('li');
-    
-    // CREATE: New <a> (anchor/link) element
-    const link = document.createElement('a');
-    link.href = page.path;
-    link.textContent = page.name;
-    link.id = page.id; // Give it an ID so we can highlight it later
-    
-    // APPEND: Add the link inside the list item
-    listItem.appendChild(link);
-    
-    // APPEND: Add the list item to the navigation
-    navList.appendChild(listItem);
+  const nav = document.createElement('nav');
+  nav.id = 'site-nav';
+
+  const current = window.location.pathname.split('/').pop() || 'index.html';
+  const links = [
+    { label: 'home',     href: 'index.html' },
+    { label: 'blog',     href: 'blog.html' },
+    { label: 'about',    href: 'about.html' },
+    { label: 'projects', href: 'projects.html' },
+  ];
+
+  links.forEach(function (item) {
+    if (item.href === current) return;
+    const a = document.createElement('a');
+    a.href = item.href;
+    a.textContent = item.label;
+    nav.appendChild(a);
   });
-  
-  // Set the active page after all links are created
-  setActivePage();
-}
 
-// FUNCTION: Highlight Current Active Page
-// Purpose: Detect which page user is on and add "active" class to highlight it
-// How: Check current page URL and match it to the pages array
-function setActivePage() {
-  // GET: Current page filename from browser URL
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-  
-  // LOOP: Through all navigation links
-  pages.forEach(page => {
-    const link = document.getElementById(page.id);
-    // GET: Expected filename from page.path
-    const pageName = page.path.split('/').pop();
-    
-    // CHECK: If this link matches current page
-    if (currentPage === pageName || (currentPage === '' && page.id === 'home')) {
-      // ADD: "active" class to highlight this link
-      link.classList.add('active');
-    } else {
-      // REMOVE: "active" class from other links
-      link.classList.remove('active');
+  document.body.appendChild(nav);
+
+  const TRIGGER_Y = 48;
+  let hideTimer = null;
+
+  function show() {
+    clearTimeout(hideTimer);
+    nav.classList.add('nav-visible');
+  }
+
+  function scheduleHide() {
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(function () {
+      nav.classList.remove('nav-visible');
+    }, 250);
+  }
+
+  document.addEventListener('mousemove', function (e) {
+    if (e.clientY < TRIGGER_Y) {
+      show();
+    } else if (!nav.matches(':hover')) {
+      scheduleHide();
     }
   });
-}
 
-// EXECUTE: Call renderNavigation when page loads
-// This ensures navigation is created before user sees the page
-document.addEventListener('DOMContentLoaded', renderNavigation);
+  nav.addEventListener('mouseenter', show);
+  nav.addEventListener('mouseleave', scheduleHide);
+})();
