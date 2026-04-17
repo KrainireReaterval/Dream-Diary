@@ -43,4 +43,4 @@ Effeciency:
 
 - Read README.md to understand this website's current progress and outcome expectations.
 
-- Read Documentation.md to understand actions, documentation, issue reports.
+- Read DOC.md to understand actions, documentation, issue reports.

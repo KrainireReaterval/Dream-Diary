@@ -1,4 +1,4 @@
 .DS store
 .env
 node_modules
-CLAUDE.md
+DOC.md
