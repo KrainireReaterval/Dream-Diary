@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Hermeneus+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
   <style>
     *, *::before, *::after {
       margin: 0;
@@ -14,18 +15,22 @@
       box-sizing: border-box;
     }
 
-    html, body {
+    html {
       width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background: white;
+      scroll-behavior: smooth;
     }
 
     body {
+      width: 100%;
+      background: white;
+      overflow-y: scroll;
+    }
+
+    .hero-section {
+      height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
     }
 
     .blog-canvas {
@@ -37,7 +42,6 @@
       overflow: visible;
     }
 
-    /* "blog" title */
     .blog-title-wrapper {
       position: absolute;
       left: 37px;
@@ -61,7 +65,6 @@
       display: block;
     }
 
-    /* Red rounded rectangle */
     .shape-rect {
       position: absolute;
       left: 112px;
@@ -70,15 +73,16 @@
       height: 87px;
       background: #FF2020;
       border-radius: 12px;
+      cursor: pointer;
     }
 
-    /* Blue triangle */
     .shape-triangle {
       position: absolute;
       left: 260px;
       top: 57px;
       width: 248px;
       height: 271px;
+      cursor: pointer;
     }
 
     .shape-triangle-inner {
@@ -91,7 +95,6 @@
       clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
     }
 
-    /* Orange circle */
     .shape-circle {
       position: absolute;
       left: 361px;
@@ -100,9 +103,9 @@
       height: 44px;
       background: #F5A520;
       border-radius: 50%;
+      cursor: pointer;
     }
 
-    /* Quote text */
     .quote-text {
       position: absolute;
       left: 472px;
@@ -110,18 +113,14 @@
       transform: translateX(-100%);
       font-family: 'Hermeneus One', serif;
       font-size: 12px;
-      font-style: normal;
       color: black;
       text-align: right;
       line-height: normal;
       white-space: nowrap;
     }
 
-    .quote-text p {
-      margin: 0;
-    }
+    .quote-text p { margin: 0; }
 
-    /* "click anywhere to continue" */
     .continue-text {
       position: absolute;
       left: 203px;
@@ -129,7 +128,6 @@
       transform: translateX(-100%);
       font-family: 'Hermeneus One', serif;
       font-size: 12px;
-      font-style: normal;
       color: #acacac;
       text-align: right;
       line-height: normal;
@@ -139,53 +137,76 @@
   </style>
 </head>
 <body>
-  <div class="blog-canvas">
+  <section class="hero-section">
+    <div class="blog-canvas">
 
-    <!-- Vector2: sweeping arc with drop shadow -->
-    <svg style="position:absolute;left:-2px;top:57px;overflow:visible;" width="557" height="265" viewBox="0 0 557 265" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <g filter="url(#filter0_d_8_88)">
-        <path d="M-2 25.4884C270.914 -105.323 307.302 334.924 560 243.356" stroke="#A9A9A9" stroke-width="2"/>
-      </g>
-      <defs>
-        <filter id="filter0_d_8_88" x="-6.43225" y="0" width="570.773" height="265" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-          <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-          <feOffset dy="4"/>
-          <feGaussianBlur stdDeviation="2"/>
-          <feComposite in2="hardAlpha" operator="out"/>
-          <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_8_88"/>
-          <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_8_88" result="shape"/>
-        </filter>
-      </defs>
-    </svg>
+      <svg style="position:absolute;left:-2px;top:57px;overflow:visible;" width="557" height="265" viewBox="0 0 557 265" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g filter="url(#filter0_d_8_88)">
+          <path d="M-2 25.4884C270.914 -105.323 307.302 334.924 560 243.356" stroke="#A9A9A9" stroke-width="2"/>
+        </g>
+        <defs>
+          <filter id="filter0_d_8_88" x="-6.43225" y="0" width="570.773" height="265" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+            <feOffset dy="4"/>
+            <feGaussianBlur stdDeviation="2"/>
+            <feComposite in2="hardAlpha" operator="out"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_8_88"/>
+            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_8_88" result="shape"/>
+          </filter>
+        </defs>
+      </svg>
 
-    <!-- "blog" title -->
-    <div class="blog-title-wrapper">
-      <span class="blog-title">blog</span>
+      <div class="blog-title-wrapper">
+        <span class="blog-title">blog</span>
+      </div>
+
+      <div class="shape-rect"></div>
+
+      <div class="shape-triangle">
+        <div class="shape-triangle-inner"></div>
+      </div>
+
+      <div class="shape-circle"></div>
+
+      <div class="quote-text">
+        <p>I don't write blogs. Blogs are stupid.</p>
+        <p>-- Once at eighteen</p>
+      </div>
+
+      <p class="continue-text">click a shape to explore</p>
+
     </div>
+  </section>
 
-    <!-- Red rounded rectangle -->
-    <div class="shape-rect"></div>
-
-    <!-- Blue triangle -->
-    <div class="shape-triangle">
-      <div class="shape-triangle-inner"></div>
+  <section class="content-section">
+    <div class="content-inner">
+      <p class="section-label">featured</p>
+      <div class="highlight-grid">
+        <div class="highlight-card" id="highlight-one">
+          <span class="card-date">—</span>
+          <a href="#" class="card-title">Post Title One</a>
+          <p class="card-excerpt">Placeholder — shape mapping TBD from Figma.</p>
+        </div>
+        <div class="highlight-card" id="highlight-two">
+          <span class="card-date">—</span>
+          <a href="#" class="card-title">Post Title Two</a>
+          <p class="card-excerpt">Placeholder — shape mapping TBD from Figma.</p>
+        </div>
+        <div class="highlight-card" id="highlight-three">
+          <span class="card-date">—</span>
+          <a href="#" class="card-title">Post Title Three</a>
+          <p class="card-excerpt">Placeholder — shape mapping TBD from Figma.</p>
+        </div>
+      </div>
+      <p class="section-label">archive</p>
+      <ul class="archive-list">
+        <li><span class="entry-date">—</span><a href="#">Post Title</a></li>
+        <li><span class="entry-date">—</span><a href="#">Post Title</a></li>
+      </ul>
     </div>
-
-    <!-- Orange circle -->
-    <div class="shape-circle"></div>
-
-    <!-- Quote -->
-    <div class="quote-text">
-      <p>I don't write blogs. Blogs are stupid.</p>
-      <p>-- Once at eighteen</p>
-    </div>
-
-    <!-- Continue prompt -->
-    <p class="continue-text">click anywhere to continue</p>
-
-  </div>
+  </section>
 
   <script>
     function scaleCanvas() {
@@ -199,8 +220,14 @@
     scaleCanvas();
     window.addEventListener('resize', scaleCanvas);
 
-    document.body.addEventListener('click', function () {
-      // TODO: navigate to blog content
+    document.querySelector('.shape-rect').addEventListener('click', function () {
+      document.getElementById('highlight-one').scrollIntoView({ behavior: 'smooth' });
+    });
+    document.querySelector('.shape-triangle').addEventListener('click', function () {
+      document.getElementById('highlight-two').scrollIntoView({ behavior: 'smooth' });
+    });
+    document.querySelector('.shape-circle').addEventListener('click', function () {
+      document.getElementById('highlight-three').scrollIntoView({ behavior: 'smooth' });
     });
   </script>
   <script src="js/navigation.js"></script>

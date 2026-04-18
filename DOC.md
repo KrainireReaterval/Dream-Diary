@@ -37,6 +37,10 @@ Add requests here. Summarize from user's text. Numeric number (1,2,3,4,...)
 
 2. Add hover-reveal headbar to blog, about, and projects pages. Bar hides by default, appears when mouse approaches the top, hides when mouse moves away. Links to all four pages (skips current page). index.html excluded.
 
+   *Amendment:* Navigation bar should be always visible (no hover-reveal). Same sizing, font, and position.
+
+3. Scrollable content sections for blog, about, projects. Hero stays as 100vh first section, unchanged. Clicking interactive hero elements (shapes on blog, text blocks on about, TBD on projects) smooth-scrolls past the hero to content below. Blog and Projects: 3 highlight cards + archive list. About: 3 subsections. Consistent content styling via style.css (Hermeneus One, black/white/#acacac, max-width 560px). Blog shape→section mapping TBD — awaiting Figma MCP install.
+
 # Changelog
 
 ## Pending for Review
@@ -45,9 +49,16 @@ Template: task + corresponding request number + what files were changed
 
 - [ ] Example: Set up navigation.js smooth scroll - edited navigation.js
 
-- [ ] Rewrite navigation.js with self-contained hover-reveal navbar (CSS injection + HTML injection + show/hide logic) — #2 — edited js/navigation.js
+- [ ] Rewrite style.css as content-section system (hero styles stay inline per page) — #3 — edited css/style.css
 
-- [ ] Link navigation.js to blog, about, projects pages — #2 — edited blog.html, about.html, projects.html
+- [ ] Restructure blog.html: 100vh hero-section wrapper + scrollable content section with highlight grid and archive list; shape click handlers — #3 — edited blog.html
+
+- [ ] Restructure about.html: 100vh hero-section wrapper + scrollable content section with 3 subsections; text block click handlers — #3 — edited about.html
+
+- [ ] Restructure projects.html: 100vh hero-section wrapper + scrollable content section with highlight grid and archive list — #3 — edited projects.html
+
+- [ ] Wire blog shape→section mapping from Figma — #3 — pending Figma MCP
+
 
 ## Completed
 
@@ -55,6 +66,11 @@ Template: task + request number + date completed
 
 - [x] Example: Write base style.css with CSS variables - 02/04/2025
 
+- [x] Rewrite navigation.js with self-contained hover-reveal navbar (CSS injection + HTML injection + show/hide logic) — #2 — edited js/navigation.js
+
+- [x] Link navigation.js to blog, about, projects pages — #2 — edited blog.html, about.html, projects.html
+
+- [x] Remove hover-reveal logic; make navbar always visible — #2 amendment — edited js/navigation.js
 
 # Architectural Decisions
 
@@ -68,7 +84,11 @@ Template: task + request number + date completed
 
 ## Design
 
-- 
+- Request #3: style.css scope limited to content sections only (below hero fold). Hero styles remain inline in each page's `<style>` block. Reason: each hero has a unique visual design that is tightly coupled to its own layout; extracting those styles would add abstraction without readability benefit. Content sections are structurally identical across pages, making a shared stylesheet worthwhile there.
+
+- Request #3: max-width 560px for content sections, matching the hero canvas width. Reason: preserves visual continuity between hero and content; keeps the sparse, narrow aesthetic consistent.
+
+- Request #3: Hermeneus One used as the single content font across blog, about, projects. Reason: already loaded on all three pages; consistent with the editorial tone of existing hero text.
 
 ## Security
 

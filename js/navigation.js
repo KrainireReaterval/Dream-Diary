@@ -19,11 +19,6 @@
       gap: 32px;
       padding: 16px 40px;
       background: white;
-      transform: translateY(-100%);
-      transition: transform 0.25s ease;
-    }
-    #site-nav.nav-visible {
-      transform: translateY(0);
     }
     #site-nav a {
       font-family: 'Goblin One', serif;
@@ -55,30 +50,4 @@
   });
 
   document.body.appendChild(nav);
-
-  const TRIGGER_Y = 48;
-  let hideTimer = null;
-
-  function show() {
-    clearTimeout(hideTimer);
-    nav.classList.add('nav-visible');
-  }
-
-  function scheduleHide() {
-    clearTimeout(hideTimer);
-    hideTimer = setTimeout(function () {
-      nav.classList.remove('nav-visible');
-    }, 250);
-  }
-
-  document.addEventListener('mousemove', function (e) {
-    if (e.clientY < TRIGGER_Y) {
-      show();
-    } else if (!nav.matches(':hover')) {
-      scheduleHide();
-    }
-  });
-
-  nav.addEventListener('mouseenter', show);
-  nav.addEventListener('mouseleave', scheduleHide);
 })();
