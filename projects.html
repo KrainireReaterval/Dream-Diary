@@ -4,109 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projects</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hermeneus+One&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-  <style>
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Goblin+One&family=Hermeneus+One&family=Monofett&display=swap" rel="stylesheet">
 
-    html {
-      width: 100%;
-      scroll-behavior: smooth;
-    }
+  <!-- [CHANGED] No inline <style> block -->
+  <link rel="stylesheet" href="css/styles.css">
 
-    body {
-      width: 100%;
-      background: white;
-      overflow-y: scroll;
-    }
-
-    .hero-section {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .projects-canvas {
-      position: relative;
-      width: 560px;
-      height: 340px;
-      background: white;
-      transform-origin: center center;
-    }
-
-    /* "Projects" title — Impact, top right (Figma: left 400, top 22, 121×34, 32px) */
-    .projects-title {
-      position: absolute;
-      left: 400px;
-      top: 22px;
-      width: 121px;
-      height: 34px;
-      font-family: Impact, 'Impact Regular', sans-serif;
-      font-size: 32px;
-      font-weight: 400;
-      color: black;
-      line-height: normal;
-    }
-
-    /* Quote block — right-aligned (Figma: left 510, top 76, translateX(-100%), right-align) */
-    .quote-block {
-      position: absolute;
-      left: 510px;
-      top: 76px;
-      transform: translateX(-100%);
-      font-family: 'Hermeneus One', serif;
-      font-size: 12px;
-      color: black;
-      text-align: right;
-      line-height: normal;
-      white-space: nowrap;
-    }
-
-    .quote-block p { margin: 0; }
-
-    /* Gray placeholder boxes — Figma layout:
-       Rectangle 2: left 22, top 160, 247×176 (tall left box)
-       Rectangle 3: left 286, top 160, 256×54  (top-right short box)
-       Rectangle 4: left 286, top 226, 256×110 (bottom-right tall box)
-    */
-    .proj-box {
-      position: absolute;
-      background: #d9d9d9;
-      cursor: pointer;
-    }
-
-    .proj-box-main {
-      left: 22px;
-      top: 160px;
-      width: 247px;
-      height: 176px;
-    }
-
-    .proj-box-top-right {
-      left: 286px;
-      top: 160px;
-      width: 256px;
-      height: 54px;
-    }
-
-    .proj-box-bottom-right {
-      left: 286px;
-      top: 226px;
-      width: 256px;
-      height: 110px;
-    }
-  </style>
+  <script src="js/main.js" defer></script>
+  <script src="js/navigation.js" defer></script>
 </head>
 <body>
+
   <section class="hero-section">
-    <div class="projects-canvas">
+    <!--
+      [CHANGED] data-scroll-to on each gray box replaces the addEventListener
+      calls that were in the inline <script> block.
+    -->
+    <div class="projects-canvas" data-canvas data-w="560" data-h="340">
 
       <p class="projects-title">Projects</p>
 
@@ -116,10 +32,10 @@
         <p>Build systems that eventually outruns me one day.</p>
       </div>
 
-      <!-- Gray placeholder boxes (Figma: Rectangle 2, 3, 4) -->
-      <div class="proj-box proj-box-main"       id="proj-1"></div>
-      <div class="proj-box proj-box-top-right"   id="proj-2"></div>
-      <div class="proj-box proj-box-bottom-right" id="proj-3"></div>
+      <!-- Gray placeholder boxes — map to the three featured project cards -->
+      <div class="proj-box proj-box-main"          data-scroll-to="highlight-one"></div>
+      <div class="proj-box proj-box-top-right"     data-scroll-to="highlight-two"></div>
+      <div class="proj-box proj-box-bottom-right"  data-scroll-to="highlight-three"></div>
 
     </div>
   </section>
@@ -152,28 +68,5 @@
     </div>
   </section>
 
-  <script>
-    function scaleCanvas() {
-      const canvas = document.querySelector('.projects-canvas');
-      const scaleX = window.innerWidth / 560;
-      const scaleY = window.innerHeight / 340;
-      const scale = Math.min(scaleX, scaleY);
-      canvas.style.transform = 'scale(' + scale + ')';
-    }
-
-    scaleCanvas();
-    window.addEventListener('resize', scaleCanvas);
-
-    document.getElementById('proj-1').addEventListener('click', function () {
-      document.getElementById('highlight-one').scrollIntoView({ behavior: 'smooth' });
-    });
-    document.getElementById('proj-2').addEventListener('click', function () {
-      document.getElementById('highlight-two').scrollIntoView({ behavior: 'smooth' });
-    });
-    document.getElementById('proj-3').addEventListener('click', function () {
-      document.getElementById('highlight-three').scrollIntoView({ behavior: 'smooth' });
-    });
-  </script>
-  <script src="js/navigation.js"></script>
 </body>
 </html>

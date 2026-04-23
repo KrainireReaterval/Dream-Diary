@@ -1,128 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="page-home">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home</title>
+
+  <!--
+    [CHANGED] All fonts consolidated into one request (was split across pages).
+    rel="preconnect" hints let the browser open the connection early so the
+    font CSS is not render-blocking.
+  -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Goblin+One&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Goblin+One&family=Hermeneus+One&family=Monofett&display=swap" rel="stylesheet">
 
-    html, body {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background: white;
-    }
-
-    body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .home-canvas {
-      position: relative;
-      width: 560px;
-      height: 330px;
-      background: white;
-      transform-origin: center center;
-      overflow: visible;
-    }
-
-    /* Nav links */
-    .nav-link {
-      position: absolute;
-      top: 18px;
-      font-family: 'Goblin One', serif;
-      font-size: 12px;
-      color: black;
-      line-height: normal;
-      white-space: nowrap;
-      text-decoration: none;
-    }
-
-    .nav-blog     { left: 234px; }
-    .nav-about    { left: 335px; }
-    .nav-projects { left: 450px; }
-
-    /* "Connecting The Dots" */
-    .tagline {
-      position: absolute;
-      left: 221px;
-      top: 170px;
-      font-family: 'Goblin One', serif;
-      font-size: 12px;
-      color: black;
-      line-height: normal;
-      white-space: nowrap;
-    }
-
-    /* Small red dot — Ellipse1 at canvas (62, 264), 5x5 */
-    .red-dot {
-      position: absolute;
-      left: 62px;
-      top: 264px;
-      width: 5px;
-      height: 5px;
-      background: red;
-      border-radius: 50%;
-    }
-
-    /* "Escape" — vector-relative (395.34, 223.5), canvas (40, 279) */
-    .escape-text {
-      position: absolute;
-      left: 40px;
-      top: 279px;
-      font-family: 'Goblin One', serif;
-      font-size: 12px;
-      color: black;
-      line-height: normal;
-      white-space: nowrap;
-    }
-  </style>
+  <!-- [CHANGED] Single external stylesheet; no inline <style> block -->
+  <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
-  <div class="home-canvas">
+<!--
+  [CHANGED] class="page-home" triggers overflow:hidden + flex-center rules in
+  styles.css (section 1) without needing a body-scoped inline style.
+-->
+<body class="page-home">
 
-    <!-- Vector1: spiral/coil line -->
-    <svg style="position:absolute;left:0;top:55.5px;overflow:visible;" width="557" height="268" viewBox="0 0 557 268" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!--
+    [CHANGED] data-canvas / data-w / data-h replace the page-specific
+    scaleCanvas() function. main.js reads these and applies transform:scale().
+    SVG width/height px attributes removed; sizing handled by CSS + viewBox.
+  -->
+  <div class="home-canvas" data-canvas data-w="560" data-h="330">
+
+    <!-- Spiral / coil line — viewBox retained; px width/height moved to CSS -->
+    <svg class="home-spiral-svg"
+         viewBox="0 0 557 268"
+         fill="none"
+         xmlns="http://www.w3.org/2000/svg"
+         aria-hidden="true">
       <path d="M596.34 267.512L642.34 0.511806C-69.6605 14.5118 -770.66 25.0118 -56.1604 115.512C515.44 187.912 264.006 209.678 66.8396 211.512" stroke="black"/>
     </svg>
 
-    <!-- Nav -->
+    <!-- Nav links (part of the artistic canvas, not the fixed #site-nav) -->
     <a class="nav-link nav-blog"     href="blog.html">blog</a>
     <a class="nav-link nav-about"    href="about.html">about</a>
     <a class="nav-link nav-projects" href="projects.html">projects</a>
 
-    <!-- Tagline -->
     <p class="tagline">Connecting The Dots</p>
-
-    <!-- Red focal dot -->
     <div class="red-dot"></div>
-
-    <!-- Escape label at spiral tip -->
     <p class="escape-text">Escape</p>
 
   </div>
 
-  <script>
-    function scaleCanvas() {
-      const canvas = document.querySelector('.home-canvas');
-      const scaleX = window.innerWidth / 560;
-      const scaleY = window.innerHeight / 330;
-      const scale = Math.min(scaleX, scaleY);
-      canvas.style.transform = 'scale(' + scale + ')';
-    }
-
-    scaleCanvas();
-    window.addEventListener('resize', scaleCanvas);
-  </script>
+  <!--
+    [CHANGED] Scripts moved to <head> with defer (executes after HTML parse,
+    before DOMContentLoaded, in source order — equivalent to end-of-body but
+    allows the browser to discover and fetch scripts earlier).
+    navigation.js intentionally excluded: home page uses canvas nav links.
+  -->
+  <script src="js/main.js" defer></script>
 </body>
 </html>

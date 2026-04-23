@@ -1,40 +1,18 @@
+/**
+ * navigation.js — injects the fixed site-nav bar
+ *
+ * [CHANGED] Removed the inline <style> injection that was here previously.
+ * All #site-nav styles now live in css/styles.css (section 9).
+ * This script only creates the DOM element.
+ */
 (function () {
-  if (!document.querySelector('link[href*="Goblin+One"]')) {
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = 'https://fonts.googleapis.com/css2?family=Goblin+One&display=swap';
-    document.head.appendChild(link);
-  }
+  'use strict';
 
-  const style = document.createElement('style');
-  style.textContent = `
-    #site-nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 9999;
-      display: flex;
-      justify-content: flex-end;
-      gap: 32px;
-      padding: 16px 40px;
-      background: white;
-    }
-    #site-nav a {
-      font-family: 'Goblin One', serif;
-      font-size: 12px;
-      color: black;
-      text-decoration: none;
-      white-space: nowrap;
-    }
-  `;
-  document.head.appendChild(style);
-
-  const nav = document.createElement('nav');
+  var nav = document.createElement('nav');
   nav.id = 'site-nav';
 
-  const current = window.location.pathname.split('/').pop() || 'index.html';
-  const links = [
+  var current = window.location.pathname.split('/').pop() || 'index.html';
+  var links = [
     { label: 'home',     href: 'index.html' },
     { label: 'blog',     href: 'blog.html' },
     { label: 'about',    href: 'about.html' },
@@ -43,7 +21,7 @@
 
   links.forEach(function (item) {
     if (item.href === current) return;
-    const a = document.createElement('a');
+    var a = document.createElement('a');
     a.href = item.href;
     a.textContent = item.label;
     nav.appendChild(a);
