@@ -74,6 +74,10 @@
       background: #FF2020;
       border-radius: 12px;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 8px;
     }
 
     .shape-triangle {
@@ -106,10 +110,38 @@
       cursor: pointer;
     }
 
+    .mind-text {
+      position: absolute;
+      left: 395px;
+      top: 47px;
+      transform: translateX(-100%);
+      font-family: 'Hermeneus One', serif;
+      font-size: 12px;
+      color: black;
+      text-align: right;
+      line-height: normal;
+      white-space: nowrap;
+      margin: 0;
+    }
+
+    .matters-text {
+      position: absolute;
+      left: 180px;
+      top: 190px;
+      transform: translateX(-100%);
+      font-family: 'Hermeneus One', serif;
+      font-size: 15px;
+      color: white;
+      text-align: right;
+      line-height: normal;
+      white-space: nowrap;
+      margin: 0;
+    }
+
     .quote-text {
       position: absolute;
-      left: 472px;
-      top: 282px;
+      left: 475px;
+      top: 302px;
       transform: translateX(-100%);
       font-family: 'Hermeneus One', serif;
       font-size: 12px;
@@ -121,18 +153,112 @@
 
     .quote-text p { margin: 0; }
 
-    .continue-text {
+    /* ── Scroll section: blog cards ── */
+    .blog-cards-section {
+      padding: 80px 40px;
+    }
+
+    .blog-cards-inner {
+      max-width: 560px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+    }
+
+    .blog-card {
+      border: 1px solid #c5c5c5;
+      display: grid;
+      grid-template-columns: 44% 56%;
+      min-height: 228px;
+      position: relative;
+    }
+
+    .blog-card-headline {
       position: absolute;
-      left: 203px;
-      top: 282px;
-      transform: translateX(-100%);
+      top: 7px;
+      left: 11px;
+      font-family: 'Hermeneus One', serif;
+      font-size: 10px;
+      color: black;
+      text-align: right;
+    }
+
+    .blog-card-left {
+      display: flex;
+      flex-direction: column;
+      padding: 28px 8px 8px 11px;
+      gap: 4px;
+      border-right: 1px solid #c5c5c5;
+    }
+
+    .blog-card-image {
+      flex: 1;
+      background: white;
+      border: 1px solid #e0e0e0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Hermeneus One', serif;
+      font-size: 10px;
+      color: #acacac;
+    }
+
+    .blog-card-caption {
+      background: #c5c5c5;
+      padding: 6px 8px;
+      font-family: 'Hermeneus One', serif;
+      font-size: 10px;
+      color: black;
+      text-align: right;
+    }
+
+    .blog-card-right {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .blog-card-what {
+      flex: 1;
+      padding: 11px 14px 8px 16px;
+      border-bottom: 1px solid #c5c5c5;
+    }
+
+    .blog-card-what-label {
       font-family: 'Hermeneus One', serif;
       font-size: 12px;
-      color: #acacac;
+      color: black;
       text-align: right;
-      line-height: normal;
-      white-space: nowrap;
-      margin: 0;
+      margin-bottom: 8px;
+    }
+
+    .blog-card-what-text {
+      font-family: 'Hermeneus One', serif;
+      font-size: 10px;
+      color: black;
+      text-align: right;
+      line-height: 1.6;
+    }
+
+    .blog-card-past {
+      flex: 1;
+      padding: 8px 14px 8px 16px;
+    }
+
+    .blog-card-past-label {
+      font-family: 'Hermeneus One', serif;
+      font-size: 12px;
+      color: black;
+      text-align: right;
+      margin-bottom: 6px;
+    }
+
+    .blog-card-past-list {
+      font-family: 'Hermeneus One', serif;
+      font-size: 10px;
+      color: black;
+      text-align: right;
+      line-height: 1.8;
     }
   </style>
 </head>
@@ -162,49 +288,83 @@
         <span class="blog-title">blog</span>
       </div>
 
-      <div class="shape-rect"></div>
+      <div class="shape-rect" id="card-rect">
+        <p class="matters-text" style="position:static;transform:none;">Matters</p>
+      </div>
 
-      <div class="shape-triangle">
+      <div class="shape-triangle" id="card-triangle">
         <div class="shape-triangle-inner"></div>
       </div>
 
-      <div class="shape-circle"></div>
+      <div class="shape-circle" id="card-circle"></div>
+
+      <p class="mind-text">Mind</p>
 
       <div class="quote-text">
-        <p>I don't write blogs. Blogs are stupid.</p>
-        <p>-- Once at eighteen</p>
+        <p>Writing is an experience to openness</p>
+        <p>and vulnerability.</p>
       </div>
-
-      <p class="continue-text">click a shape to explore</p>
 
     </div>
   </section>
 
-  <section class="content-section">
-    <div class="content-inner">
-      <p class="section-label">featured</p>
-      <div class="highlight-grid">
-        <div class="highlight-card" id="highlight-one">
-          <span class="card-date">—</span>
-          <a href="#" class="card-title">Post Title One</a>
-          <p class="card-excerpt">Placeholder — shape mapping TBD from Figma.</p>
+  <section class="blog-cards-section">
+    <div class="blog-cards-inner">
+
+      <div class="blog-card" id="card-1">
+        <div class="blog-card-headline">Headline</div>
+        <div class="blog-card-left">
+          <div class="blog-card-image">Pictures here</div>
+          <div class="blog-card-caption">A scrape of content that fit inside this box.</div>
         </div>
-        <div class="highlight-card" id="highlight-two">
-          <span class="card-date">—</span>
-          <a href="#" class="card-title">Post Title Two</a>
-          <p class="card-excerpt">Placeholder — shape mapping TBD from Figma.</p>
-        </div>
-        <div class="highlight-card" id="highlight-three">
-          <span class="card-date">—</span>
-          <a href="#" class="card-title">Post Title Three</a>
-          <p class="card-excerpt">Placeholder — shape mapping TBD from Figma.</p>
+        <div class="blog-card-right">
+          <div class="blog-card-what">
+            <div class="blog-card-what-label">What am I looking at?</div>
+            <div class="blog-card-what-text">Explains the gist of this section,<br>What will readers get out of it,<br>Specific topics such as.</div>
+          </div>
+          <div class="blog-card-past">
+            <div class="blog-card-past-label">Past blogs:</div>
+            <div class="blog-card-past-list">Placeholder_name_1<br>Placeholder_name_2<br>Placeholder_name_3<br>Shows the newest three</div>
+          </div>
         </div>
       </div>
-      <p class="section-label">archive</p>
-      <ul class="archive-list">
-        <li><span class="entry-date">—</span><a href="#">Post Title</a></li>
-        <li><span class="entry-date">—</span><a href="#">Post Title</a></li>
-      </ul>
+
+      <div class="blog-card" id="card-2">
+        <div class="blog-card-headline">Headline</div>
+        <div class="blog-card-left">
+          <div class="blog-card-image">Pictures here</div>
+          <div class="blog-card-caption">A scrape of content that fit inside this box.</div>
+        </div>
+        <div class="blog-card-right">
+          <div class="blog-card-what">
+            <div class="blog-card-what-label">What am I looking at?</div>
+            <div class="blog-card-what-text">Explains the gist of this section,<br>What will readers get out of it,<br>Specific topics such as.</div>
+          </div>
+          <div class="blog-card-past">
+            <div class="blog-card-past-label">Past blogs:</div>
+            <div class="blog-card-past-list">Placeholder_name_1<br>Placeholder_name_2<br>Placeholder_name_3<br>Shows the newest three</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="blog-card" id="card-3">
+        <div class="blog-card-headline">Headline</div>
+        <div class="blog-card-left">
+          <div class="blog-card-image">Pictures here</div>
+          <div class="blog-card-caption">A scrape of content that fit inside this box.</div>
+        </div>
+        <div class="blog-card-right">
+          <div class="blog-card-what">
+            <div class="blog-card-what-label">What am I looking at?</div>
+            <div class="blog-card-what-text">Explains the gist of this section,<br>What will readers get out of it,<br>Specific topics such as.</div>
+          </div>
+          <div class="blog-card-past">
+            <div class="blog-card-past-label">Past blogs:</div>
+            <div class="blog-card-past-list">Placeholder_name_1<br>Placeholder_name_2<br>Placeholder_name_3<br>Shows the newest three</div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -220,14 +380,14 @@
     scaleCanvas();
     window.addEventListener('resize', scaleCanvas);
 
-    document.querySelector('.shape-rect').addEventListener('click', function () {
-      document.getElementById('highlight-one').scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('card-rect').addEventListener('click', function () {
+      document.getElementById('card-1').scrollIntoView({ behavior: 'smooth' });
     });
-    document.querySelector('.shape-triangle').addEventListener('click', function () {
-      document.getElementById('highlight-two').scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('card-triangle').addEventListener('click', function () {
+      document.getElementById('card-2').scrollIntoView({ behavior: 'smooth' });
     });
-    document.querySelector('.shape-circle').addEventListener('click', function () {
-      document.getElementById('highlight-three').scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('card-circle').addEventListener('click', function () {
+      document.getElementById('card-3').scrollIntoView({ behavior: 'smooth' });
     });
   </script>
   <script src="js/navigation.js"></script>

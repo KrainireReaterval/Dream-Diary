@@ -36,11 +36,12 @@
     .projects-canvas {
       position: relative;
       width: 560px;
-      height: 320px;
+      height: 340px;
       background: white;
       transform-origin: center center;
     }
 
+    /* "Projects" title — Impact, top right (Figma: left 400, top 22, 121×34, 32px) */
     .projects-title {
       position: absolute;
       left: 400px;
@@ -54,6 +55,7 @@
       line-height: normal;
     }
 
+    /* Quote block — right-aligned (Figma: left 510, top 76, translateX(-100%), right-align) */
     .quote-block {
       position: absolute;
       left: 510px;
@@ -68,6 +70,38 @@
     }
 
     .quote-block p { margin: 0; }
+
+    /* Gray placeholder boxes — Figma layout:
+       Rectangle 2: left 22, top 160, 247×176 (tall left box)
+       Rectangle 3: left 286, top 160, 256×54  (top-right short box)
+       Rectangle 4: left 286, top 226, 256×110 (bottom-right tall box)
+    */
+    .proj-box {
+      position: absolute;
+      background: #d9d9d9;
+      cursor: pointer;
+    }
+
+    .proj-box-main {
+      left: 22px;
+      top: 160px;
+      width: 247px;
+      height: 176px;
+    }
+
+    .proj-box-top-right {
+      left: 286px;
+      top: 160px;
+      width: 256px;
+      height: 54px;
+    }
+
+    .proj-box-bottom-right {
+      left: 286px;
+      top: 226px;
+      width: 256px;
+      height: 110px;
+    }
   </style>
 </head>
 <body>
@@ -79,8 +113,13 @@
       <div class="quote-block">
         <p>World is a game!</p>
         <p>I value experience and legacy.</p>
-        <p>Build systems that last as far as it goes.</p>
+        <p>Build systems that eventually outruns me one day.</p>
       </div>
+
+      <!-- Gray placeholder boxes (Figma: Rectangle 2, 3, 4) -->
+      <div class="proj-box proj-box-main"       id="proj-1"></div>
+      <div class="proj-box proj-box-top-right"   id="proj-2"></div>
+      <div class="proj-box proj-box-bottom-right" id="proj-3"></div>
 
     </div>
   </section>
@@ -92,17 +131,17 @@
         <div class="highlight-card" id="highlight-one">
           <span class="card-date">—</span>
           <a href="#" class="card-title">Project One</a>
-          <p class="card-excerpt">Placeholder — hero interaction TBD from Figma.</p>
+          <p class="card-excerpt">Placeholder — content TBD.</p>
         </div>
         <div class="highlight-card" id="highlight-two">
           <span class="card-date">—</span>
           <a href="#" class="card-title">Project Two</a>
-          <p class="card-excerpt">Placeholder — hero interaction TBD from Figma.</p>
+          <p class="card-excerpt">Placeholder — content TBD.</p>
         </div>
         <div class="highlight-card" id="highlight-three">
           <span class="card-date">—</span>
           <a href="#" class="card-title">Project Three</a>
-          <p class="card-excerpt">Placeholder — hero interaction TBD from Figma.</p>
+          <p class="card-excerpt">Placeholder — content TBD.</p>
         </div>
       </div>
       <p class="section-label">archive</p>
@@ -117,13 +156,23 @@
     function scaleCanvas() {
       const canvas = document.querySelector('.projects-canvas');
       const scaleX = window.innerWidth / 560;
-      const scaleY = window.innerHeight / 320;
+      const scaleY = window.innerHeight / 340;
       const scale = Math.min(scaleX, scaleY);
       canvas.style.transform = 'scale(' + scale + ')';
     }
 
     scaleCanvas();
     window.addEventListener('resize', scaleCanvas);
+
+    document.getElementById('proj-1').addEventListener('click', function () {
+      document.getElementById('highlight-one').scrollIntoView({ behavior: 'smooth' });
+    });
+    document.getElementById('proj-2').addEventListener('click', function () {
+      document.getElementById('highlight-two').scrollIntoView({ behavior: 'smooth' });
+    });
+    document.getElementById('proj-3').addEventListener('click', function () {
+      document.getElementById('highlight-three').scrollIntoView({ behavior: 'smooth' });
+    });
   </script>
   <script src="js/navigation.js"></script>
 </body>
