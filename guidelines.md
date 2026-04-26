@@ -32,11 +32,7 @@ Add requests here. Summarize from user's text. Numeric number (1,2,3,4,...)
 
 Template: request number + your work
 
-## Pending for Review
-
-
-## Completed
-
+When adding new changelogs, do not ad the "x" in them.
 
 - [x] Example: Write base style.css with CSS variables
 
