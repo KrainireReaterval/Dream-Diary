@@ -6,13 +6,11 @@
  *   1.  Reset & base
  *   2.  Hero canvas (shared)
  *   3.  Home page
- *   4.  Blog page — hero
- *   5.  Blog page — scroll cards
- *   6.  About page — hero
- *   7.  Projects page — hero
- *   8.  Shared content sections (scroll)
- *   9.  Navigation bar
- *  10.  Responsive breakpoints (360 / 768 / 1280)
+ *   4.  About page — hero
+ *   5.  Projects page — hero
+ *   6.  Shared content sections (scroll)
+ *   7.  Navigation bar
+ *   8.  Responsive breakpoints (360 / 768 / 1280)
  */
 
 /* ─────────────────────────────────────────────
@@ -141,250 +139,7 @@ body.page-home {
 }
 
 /* ─────────────────────────────────────────────
-   4. BLOG PAGE — HERO
-   ─────────────────────────────────────────────
-*/
-.blog-canvas {
-  width: 35rem;
-  height: 20rem; /* 320px */
-  overflow: visible;
-}
-
-/* [CHANGED] Extracted from inline style="position:absolute;left:-2px;top:57px;" */
-.blog-curve-svg {
-  position: absolute;
-  left: -0.125rem;
-  top: 3.5625rem; /* 57px */
-  overflow: visible;
-  width: 34.8125rem;
-  height: 16.5625rem;
-}
-
-.blog-title-wrapper {
-  position: absolute;
-  left: 2.3125rem; /* 37px */
-  top: -0.25rem;
-  width: 7.57rem;
-  height: 5.366rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: visible;
-}
-
-.blog-title {
-  font-family: 'Caveat', cursive;
-  font-size: 4rem; /* 64px */
-  font-weight: 400;
-  color: black;
-  line-height: normal;
-  transform: rotate(-21.18deg);
-  white-space: nowrap;
-  display: block;
-}
-
-.shape-rect {
-  position: absolute;
-  left: 7rem;    /* 112px */
-  top: 8.375rem; /* 134px */
-  width: 5.6875rem; /* 91px */
-  height: 5.4375rem; /* 87px */
-  background: #ff2020;
-  border-radius: 0.75rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding-right: 0.5rem;
-}
-
-/* "Matters" — white label inside the red rectangle */
-.shape-rect p {
-  font-family: 'Hermeneus One', serif;
-  font-size: 0.9375rem; /* 15px */
-  color: white;
-  text-align: right;
-  white-space: nowrap;
-  margin: 0;
-}
-
-.shape-triangle {
-  position: absolute;
-  left: 16.25rem; /* 260px */
-  top: 3.5625rem; /* 57px */
-  width: 15.5rem; /* 248px */
-  height: 16.9375rem; /* 271px */
-  cursor: pointer;
-}
-
-.shape-triangle-inner {
-  position: absolute;
-  left: 6.7%;
-  right: 6.7%;
-  top: 0;
-  bottom: 25%;
-  background: #2800ff;
-  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-}
-
-.shape-circle {
-  position: absolute;
-  left: 22.5625rem; /* 361px */
-  top: 0.8125rem;   /* 13px */
-  width: 2.8125rem; /* 45px */
-  height: 2.75rem;  /* 44px */
-  background: #f5a520;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.mind-text {
-  position: absolute;
-  left: 24.6875rem; /* 395px */
-  top: 2.9375rem;   /* 47px */
-  transform: translateX(-100%);
-  font-family: 'Hermeneus One', serif;
-  font-size: 0.75rem;
-  color: black;
-  text-align: right;
-  line-height: normal;
-  white-space: nowrap;
-}
-
-.quote-text {
-  position: absolute;
-  left: 29.6875rem; /* 475px */
-  top: 18.875rem;   /* 302px */
-  transform: translateX(-100%);
-  font-family: 'Hermeneus One', serif;
-  font-size: 0.75rem;
-  color: black;
-  text-align: right;
-  line-height: normal;
-  white-space: nowrap;
-}
-.quote-text p { margin: 0; }
-
-/* ─────────────────────────────────────────────
-   5. BLOG PAGE — SCROLL CARDS
-   ─────────────────────────────────────────────
-*/
-.blog-cards-section {
-  padding: 5rem 2.5rem;
-}
-
-.blog-cards-inner {
-  max-width: 35rem;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-}
-
-.blog-card {
-  border: 1px solid #c5c5c5;
-  display: grid;
-  grid-template-columns: 44% 56%;
-  min-height: 14.25rem; /* 228px */
-  position: relative;
-}
-
-.blog-card-headline {
-  position: absolute;
-  top: 0.4375rem;
-  left: 0.6875rem;
-  font-family: 'Hermeneus One', serif;
-  font-size: 0.625rem;
-  color: black;
-  text-align: right;
-}
-
-.blog-card-left {
-  display: flex;
-  flex-direction: column;
-  padding: 1.75rem 0.5rem 0.5rem 0.6875rem;
-  gap: 0.25rem;
-  border-right: 1px solid #c5c5c5;
-}
-
-.blog-card-image {
-  flex: 1;
-  background: white;
-  border: 1px solid #e0e0e0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Hermeneus One', serif;
-  font-size: 0.625rem;
-  color: #acacac;
-  /* [CHANGED] Lazy-load hint: any actual <img> inside gets loading="lazy" in HTML */
-}
-
-.blog-card-image img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-.blog-card-caption {
-  background: #c5c5c5;
-  padding: 0.375rem 0.5rem;
-  font-family: 'Hermeneus One', serif;
-  font-size: 0.625rem;
-  color: black;
-  text-align: right;
-}
-
-.blog-card-right {
-  display: flex;
-  flex-direction: column;
-}
-
-.blog-card-what {
-  flex: 1;
-  padding: 0.6875rem 0.875rem 0.5rem 1rem;
-  border-bottom: 1px solid #c5c5c5;
-}
-
-.blog-card-what-label {
-  font-family: 'Hermeneus One', serif;
-  font-size: 0.75rem;
-  color: black;
-  text-align: right;
-  margin-bottom: 0.5rem;
-}
-
-.blog-card-what-text {
-  font-family: 'Hermeneus One', serif;
-  font-size: 0.625rem;
-  color: black;
-  text-align: right;
-  line-height: 1.6;
-}
-
-.blog-card-past {
-  flex: 1;
-  padding: 0.5rem 0.875rem 0.5rem 1rem;
-}
-
-.blog-card-past-label {
-  font-family: 'Hermeneus One', serif;
-  font-size: 0.75rem;
-  color: black;
-  text-align: right;
-  margin-bottom: 0.375rem;
-}
-
-.blog-card-past-list {
-  font-family: 'Hermeneus One', serif;
-  font-size: 0.625rem;
-  color: black;
-  text-align: right;
-  line-height: 1.8;
-}
-
-/* ─────────────────────────────────────────────
-   6. ABOUT PAGE — HERO
+   4. ABOUT PAGE — HERO
    ─────────────────────────────────────────────
 */
 .about-canvas {
@@ -498,7 +253,7 @@ body.page-home {
 }
 
 /* ─────────────────────────────────────────────
-   7. PROJECTS PAGE — HERO
+   5. PROJECTS PAGE — HERO
    ─────────────────────────────────────────────
 */
 .projects-canvas {
@@ -543,7 +298,7 @@ body.page-home {
 .proj-box-bottom-right { left: 17.875rem; top: 14.125rem; width: 16rem;     height: 6.875rem; }
 
 /* ─────────────────────────────────────────────
-   8. SHARED CONTENT SECTIONS
+   6. SHARED CONTENT SECTIONS
    ─────────────────────────────────────────────
    [CHANGED] All lengths converted from px to rem.
 */
@@ -649,7 +404,7 @@ body.page-home {
 }
 
 /* ─────────────────────────────────────────────
-   9. NAVIGATION BAR (injected by navigation.js)
+   7. NAVIGATION BAR (injected by navigation.js)
    ─────────────────────────────────────────────
    [CHANGED] Moved here from navigation.js's injected <style> block.
    navigation.js no longer injects any CSS.
@@ -676,7 +431,7 @@ body.page-home {
 }
 
 /* ─────────────────────────────────────────────
-   10. RESPONSIVE BREAKPOINTS
+   8. RESPONSIVE BREAKPOINTS
    ─────────────────────────────────────────────
    [CHANGED] New section — was absent in the original codebase.
    The hero canvas itself scales via JS (transform: scale), so canvas
@@ -691,24 +446,7 @@ body.page-home {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  /* Blog card: stack panels vertically */
-  .blog-card {
-    grid-template-columns: 1fr;
-  }
-  .blog-card-left {
-    border-right: none;
-    border-bottom: 1px solid #c5c5c5;
-    min-height: 7.5rem;
-    padding-top: 1.75rem;
-  }
-  .blog-card-headline {
-    /* Re-flow from absolute to in-block on narrow cards */
-    position: static;
-    padding: 0.4375rem 0.6875rem 0;
-  }
-
   .content-section    { padding: 3rem 1.5rem; }
-  .blog-cards-section { padding: 3rem 1.5rem; }
 
   #site-nav { gap: 1.25rem; padding: 0.75rem 1.5rem; }
 }
@@ -717,10 +455,8 @@ body.page-home {
 @media (max-width: 30rem) {
   /* Single column everywhere */
   .highlight-grid     { grid-template-columns: 1fr; }
-  .blog-card          { grid-template-columns: 1fr; }
 
   .content-section    { padding: 2rem 1rem; }
-  .blog-cards-section { padding: 2rem 1rem; }
 
   #site-nav {
     gap: 0.75rem;
