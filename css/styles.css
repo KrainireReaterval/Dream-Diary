@@ -6,11 +6,12 @@
  *   1.  Reset & base
  *   2.  Hero canvas (shared)
  *   3.  Home page
- *   4.  About page — hero
- *   5.  Projects page — hero
- *   6.  Shared content sections (scroll)
- *   7.  Navigation bar
- *   8.  Responsive breakpoints (360 / 768 / 1280)
+ *   4.  Blog page — hero
+ *   5.  About page — hero
+ *   6.  Projects page — hero
+ *   7.  Shared content sections (scroll)
+ *   8.  Navigation bar
+ *   9.  Responsive breakpoints (360 / 768 / 1280)
  */
 
 /* ─────────────────────────────────────────────
@@ -139,7 +140,127 @@ body.page-home {
 }
 
 /* ─────────────────────────────────────────────
-   4. ABOUT PAGE — HERO
+   4. BLOG PAGE — HERO
+   ─────────────────────────────────────────────
+*/
+.blog-canvas {
+  width: 34.8125rem;  /* 557px — from Figma frame */
+  height: 22.25rem;   /* 356px */
+  overflow: visible;
+}
+
+.blog-curve-svg {
+  position: absolute;
+  left: -0.3125rem;   /* -5px */
+  top: 4.8125rem;     /* 77px */
+  overflow: visible;
+  width: 35.125rem;   /* 562px */
+  height: 15.9375rem; /* 255px */
+}
+
+.blog-title-wrapper {
+  position: absolute;
+  left: 2.125rem;     /* 34px */
+  top: 1rem;          /* 16px */
+  width: 7.57rem;
+  height: 5.366rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+.blog-title {
+  font-family: 'Caveat', cursive;
+  font-size: 4rem;    /* 64px */
+  font-weight: 400;
+  color: black;
+  line-height: normal;
+  transform: rotate(-21.18deg);
+  white-space: nowrap;
+  display: block;
+}
+
+.shape-rect {
+  position: absolute;
+  left: 6.8125rem;    /* 109px */
+  top: 9.625rem;      /* 154px */
+  width: 5.6875rem;   /* 91px */
+  height: 5.4375rem;  /* 87px */
+  background: #ff2020;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 0.5rem;
+}
+
+.shape-rect p {
+  font-family: 'Hermeneus One', serif;
+  font-size: 0.9375rem; /* 15px */
+  color: white;
+  text-align: right;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.shape-triangle {
+  position: absolute;
+  left: 16.0625rem;   /* 257px */
+  top: 4.8125rem;     /* 77px */
+  width: 15.5rem;     /* 248px */
+  height: 16.9375rem; /* 271px */
+}
+
+.shape-triangle-inner {
+  position: absolute;
+  left: 6.7%;
+  right: 6.7%;
+  top: 0;
+  bottom: 25%;
+  background: #2800ff;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.shape-circle {
+  position: absolute;
+  left: 22.375rem;    /* 358px */
+  top: 2.0625rem;     /* 33px */
+  width: 2.8125rem;   /* 45px */
+  height: 2.75rem;    /* 44px */
+  background: #f5a520;
+  border-radius: 50%;
+}
+
+.mind-text {
+  position: absolute;
+  left: 24.6875rem;   /* 395px */
+  top: 2.9375rem;     /* 47px */
+  transform: translateX(-100%);
+  font-family: 'Hermeneus One', serif;
+  font-size: 0.75rem;
+  color: black;
+  text-align: right;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.quote-text {
+  position: absolute;
+  left: 29.6875rem;   /* 475px */
+  top: 18.875rem;     /* 302px */
+  transform: translateX(-100%);
+  font-family: 'Hermeneus One', serif;
+  font-size: 0.75rem;
+  color: black;
+  text-align: right;
+  line-height: normal;
+  white-space: nowrap;
+}
+.quote-text p { margin: 0; }
+
+/* ─────────────────────────────────────────────
+   5. ABOUT PAGE — HERO
    ─────────────────────────────────────────────
 */
 .about-canvas {
@@ -253,7 +374,7 @@ body.page-home {
 }
 
 /* ─────────────────────────────────────────────
-   5. PROJECTS PAGE — HERO
+   6. PROJECTS PAGE — HERO
    ─────────────────────────────────────────────
 */
 .projects-canvas {
@@ -298,7 +419,7 @@ body.page-home {
 .proj-box-bottom-right { left: 17.875rem; top: 14.125rem; width: 16rem;     height: 6.875rem; }
 
 /* ─────────────────────────────────────────────
-   6. SHARED CONTENT SECTIONS
+   7. SHARED CONTENT SECTIONS
    ─────────────────────────────────────────────
    [CHANGED] All lengths converted from px to rem.
 */
@@ -404,7 +525,7 @@ body.page-home {
 }
 
 /* ─────────────────────────────────────────────
-   7. NAVIGATION BAR (injected by navigation.js)
+   8. NAVIGATION BAR (injected by navigation.js)
    ─────────────────────────────────────────────
    [CHANGED] Moved here from navigation.js's injected <style> block.
    navigation.js no longer injects any CSS.
@@ -431,7 +552,7 @@ body.page-home {
 }
 
 /* ─────────────────────────────────────────────
-   8. RESPONSIVE BREAKPOINTS
+   9. RESPONSIVE BREAKPOINTS
    ─────────────────────────────────────────────
    [CHANGED] New section — was absent in the original codebase.
    The hero canvas itself scales via JS (transform: scale), so canvas
