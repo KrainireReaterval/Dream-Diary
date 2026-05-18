@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="page-blog">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +14,7 @@
   <script src="js/main.js" defer></script>
   <script src="js/navigation.js" defer></script>
 </head>
-<body>
+<body class="page-blog">
 
   <section class="hero-section">
     <div class="blog-canvas" data-canvas data-w="557" data-h="356">
@@ -49,15 +49,21 @@
         <span class="blog-title">blog</span>
       </div>
 
-      <div class="shape-rect">
+      <div class="shape-rect"
+           data-overlay="overlay-matters"
+           role="button" tabindex="0" aria-label="Open Matters">
         <p>Matters</p>
       </div>
 
-      <div class="shape-triangle">
+      <div class="shape-triangle"
+           data-overlay="overlay-thread"
+           role="button" tabindex="0" aria-label="Open Thread">
         <div class="shape-triangle-inner"></div>
       </div>
 
-      <div class="shape-circle"></div>
+      <div class="shape-circle"
+           data-overlay="overlay-mind"
+           role="button" tabindex="0" aria-label="Open Mind"></div>
 
       <p class="mind-text">Mind</p>
 
@@ -68,6 +74,47 @@
 
     </div>
   </section>
+
+  <!-- Overlay: Matters -->
+  <aside class="overlay-panel" id="overlay-matters" role="dialog" aria-modal="true" aria-label="Matters">
+    <button class="overlay-close" aria-label="Close">&times;</button>
+    <p class="overlay-label">01</p>
+    <h2 class="overlay-title">Matters</h2>
+    <p class="overlay-desc">Things that hold weight.</p>
+    <ul class="overlay-list">
+      <li><span class="overlay-date">—</span><a href="#">Post Title One</a></li>
+      <li><span class="overlay-date">—</span><a href="#">Post Title Two</a></li>
+      <li><span class="overlay-date">—</span><a href="#">Post Title Three</a></li>
+    </ul>
+  </aside>
+
+  <!-- Overlay: Thread -->
+  <aside class="overlay-panel" id="overlay-thread" role="dialog" aria-modal="true" aria-label="Thread">
+    <button class="overlay-close" aria-label="Close">&times;</button>
+    <p class="overlay-label">02</p>
+    <h2 class="overlay-title">Thread</h2>
+    <p class="overlay-desc">A chain of connected thoughts.</p>
+    <ul class="overlay-list">
+      <li><span class="overlay-date">—</span><a href="#">Post Title One</a></li>
+      <li><span class="overlay-date">—</span><a href="#">Post Title Two</a></li>
+      <li><span class="overlay-date">—</span><a href="#">Post Title Three</a></li>
+    </ul>
+  </aside>
+
+  <!-- Overlay: Mind -->
+  <aside class="overlay-panel" id="overlay-mind" role="dialog" aria-modal="true" aria-label="Mind">
+    <button class="overlay-close" aria-label="Close">&times;</button>
+    <p class="overlay-label">03</p>
+    <h2 class="overlay-title">Mind</h2>
+    <p class="overlay-desc">Reflection and inner state.</p>
+    <ul class="overlay-list">
+      <li><span class="overlay-date">—</span><a href="#">Post Title One</a></li>
+      <li><span class="overlay-date">—</span><a href="#">Post Title Two</a></li>
+      <li><span class="overlay-date">—</span><a href="#">Post Title Three</a></li>
+    </ul>
+  </aside>
+
+  <div class="overlay-backdrop" id="overlay-backdrop"></div>
 
 </body>
 </html>
