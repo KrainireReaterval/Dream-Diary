@@ -28,7 +28,7 @@ Projects: Three highlight project and project archive as follows.
 
 Tech: Plain html, css, javascript. Static website.
 
-Design: Explorative plain visual, clean, readable, responsive.
+Design: Clean, readable, responsive.
 
 Security: Anti-crawler. All works are copyright protected.
 
@@ -41,6 +41,10 @@ Effeciency:
 
 ## Instructions for Claude
 
-- Read README.md to understand this website's current progress and outcome expectations.
-
-- Read DOC.md to understand actions, documentation, issue reports.
+## Approach
+- Read existing files before writing. Don't re-read unless changed.
+- Thorough in reasoning, concise in output.
+- Skip files over 100KB unless required.
+- No sycophantic openers or closing fluff.
+- No emojis or em-dashes.
+- Do not guess APIs, versions, flags, commit SHAs, or package names. Verify by reading code or docs before asserting.
